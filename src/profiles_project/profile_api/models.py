@@ -68,3 +68,13 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
         Returns a string when Object is printed
         """
         return self.email
+class ProfileFeedItem(models.Model):
+    """Profile Status Update"""
+    user_profile = models.ForeignKey('UserProfile',on_delete=models.CASCADE)
+# CASCADE means it deletes the status on deleting the profiles
+    status_text= models.CharField(max_length=255)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        """Return Model as a string"""
+        return self.status_text
