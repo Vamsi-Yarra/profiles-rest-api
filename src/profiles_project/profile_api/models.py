@@ -68,6 +68,7 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
         Returns a string when Object is printed
         """
         return self.email
+
 class ProfileFeedItem(models.Model):
     """Profile Status Update"""
     user_profile = models.ForeignKey('UserProfile',on_delete=models.CASCADE)
